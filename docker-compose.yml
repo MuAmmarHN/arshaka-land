@@ -1,0 +1,60 @@
+version: '3.8'
+
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: arshaka_mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: arshaka_db
+      MYSQL_USER: arshaka_user
+      MYSQL_PASSWORD: arshaka_pass
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./backend/migrations:/docker-entrypoint-initdb.d
+    networks:
+      - arshaka_network
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: arshaka_backend
+    ports:
+      - "8080:8080"
+    environment:
+      DB_HOST: mysql
+      DB_PORT: 3306
+      DB_USER: arshaka_user
+      DB_PASSWORD: arshaka_pass
+      DB_NAME: arshaka_db
+      JWT_SECRET: your-super-secret-jwt-key-here
+    depends_on:
+      - mysql
+    networks:
+      - arshaka_network
+    volumes:
+      - ./backend/uploads:/app/uploads
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: arshaka_frontend
+    ports:
+      - "3000:3000"
+    environment:
+      REACT_APP_API_URL: http://localhost:8080
+    depends_on:
+      - backend
+    networks:
+      - arshaka_network
+
+volumes:
+  mysql_data:
+
+networks:
+  arshaka_network:
+    driver: bridge

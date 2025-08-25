@@ -1,0 +1,119 @@
+/* Modern Red Color Palette - #D30000 */
+:root {
+  /* Primary Red Shades */
+  --maroon-50: #fef2f2;
+  --maroon-100: #fee2e2;
+  --maroon-200: #fecaca;
+  --maroon-300: #fca5a5;
+  --maroon-400: #f87171;
+  --maroon-500: #ef4444;
+  --maroon-600: #dc2626;
+  --maroon-700: #D30000;
+  --maroon-800: #800000;
+  --maroon-900: #991b1b;
+  --maroon-950: #7f1d1d;
+
+  /* Modern Gradients */
+  --gradient-maroon-primary: linear-gradient(135deg, #D30000 0%, #800000 100%);
+  --gradient-maroon-light: linear-gradient(135deg, #D30000 0%, #dc2626 50%, #800000 100%);
+  --gradient-maroon-soft: linear-gradient(135deg, #fef2f2 0%, #fecaca 50%, #fca5a5 100%);
+  --gradient-maroon-hover: linear-gradient(135deg, #800000 0%, #D30000 100%);
+
+  /* Glass Effect Gradients */
+  --gradient-maroon-glass: linear-gradient(135deg, rgba(211, 0, 0, 0.1) 0%, rgba(128, 0, 0, 0.2) 100%);
+  --gradient-maroon-glass-hover: linear-gradient(135deg, rgba(211, 0, 0, 0.2) 0%, rgba(128, 0, 0, 0.3) 100%);
+
+  /* Shadow Colors */
+  --shadow-maroon-sm: 0 1px 2px 0 rgba(211, 0, 0, 0.05);
+  --shadow-maroon-md: 0 4px 6px -1px rgba(211, 0, 0, 0.1), 0 2px 4px -1px rgba(211, 0, 0, 0.06);
+  --shadow-maroon-lg: 0 10px 15px -3px rgba(211, 0, 0, 0.1), 0 4px 6px -2px rgba(211, 0, 0, 0.05);
+  --shadow-maroon-xl: 0 20px 25px -5px rgba(211, 0, 0, 0.1), 0 10px 10px -5px rgba(211, 0, 0, 0.04);
+}
+
+/* Utility Classes */
+.bg-maroon-gradient {
+  background: var(--gradient-maroon-primary);
+}
+
+.bg-maroon-light-gradient {
+  background: var(--gradient-maroon-light);
+}
+
+.bg-maroon-glass {
+  background: var(--gradient-maroon-glass);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(155, 44, 44, 0.1);
+}
+
+.bg-maroon-glass:hover {
+  background: var(--gradient-maroon-glass-hover);
+}
+
+.text-maroon-gradient {
+  background: var(--gradient-maroon-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.border-maroon-gradient {
+  border-image: var(--gradient-maroon-primary) 1;
+}
+
+.shadow-maroon-sm {
+  box-shadow: var(--shadow-maroon-sm);
+}
+
+.shadow-maroon-md {
+  box-shadow: var(--shadow-maroon-md);
+}
+
+.shadow-maroon-lg {
+  box-shadow: var(--shadow-maroon-lg);
+}
+
+.shadow-maroon-xl {
+  box-shadow: var(--shadow-maroon-xl);
+}
+
+/* Button Styles */
+.btn-maroon-gradient {
+  background: var(--gradient-maroon-primary);
+  color: white;
+  transition: all 0.3s ease;
+  box-shadow: var(--shadow-maroon-md);
+}
+
+.btn-maroon-gradient:hover {
+  background: var(--gradient-maroon-hover);
+  box-shadow: var(--shadow-maroon-lg);
+  transform: translateY(-1px);
+}
+
+.btn-maroon-outline {
+  background: transparent;
+  border: 2px solid var(--maroon-600);
+  color: var(--maroon-600);
+  transition: all 0.3s ease;
+}
+
+.btn-maroon-outline:hover {
+  background: var(--gradient-maroon-primary);
+  color: white;
+  box-shadow: var(--shadow-maroon-md);
+}
+
+/* Card Styles */
+.card-maroon-gradient {
+  background: var(--gradient-maroon-glass);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(155, 44, 44, 0.1);
+  box-shadow: var(--shadow-maroon-md);
+}
+
+.card-maroon-gradient:hover {
+  background: var(--gradient-maroon-glass-hover);
+  box-shadow: var(--shadow-maroon-lg);
+  transform: translateY(-2px);
+  transition: all 0.3s ease;
+}

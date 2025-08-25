@@ -1,0 +1,308 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Import custom colors */
+@import './styles/colors.css';
+
+/* Custom styles for Arshaka Bimantara */
+:root {
+  --maroon: #D30000;
+  --dark-red: #800000;
+  --light-maroon: #FF4444;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+/* Custom maroon theme classes */
+.bg-maroon {
+  background-color: var(--maroon);
+}
+
+.bg-dark-red {
+  background-color: var(--dark-red);
+}
+
+.bg-light-maroon {
+  background-color: var(--light-maroon);
+}
+
+.text-maroon {
+  color: var(--maroon);
+}
+
+.text-dark-red {
+  color: var(--dark-red);
+}
+
+.text-light-maroon {
+  color: var(--light-maroon);
+}
+
+.border-maroon {
+  border-color: var(--maroon);
+}
+
+.hover\:bg-maroon:hover {
+  background-color: var(--maroon);
+}
+
+.hover\:bg-dark-red:hover {
+  background-color: var(--dark-red);
+}
+
+/* Banner Swiper Styles */
+.banner-swiper {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.banner-swiper .swiper-pagination {
+  bottom: 20px !important;
+  z-index: 10;
+}
+
+.banner-swiper .swiper-pagination-bullet {
+  background: rgba(255, 255, 255, 0.6);
+  opacity: 1;
+  width: 12px;
+  height: 12px;
+  margin: 0 6px;
+  transition: all 0.3s ease;
+}
+
+.banner-swiper .swiper-pagination-bullet-active {
+  background: var(--maroon);
+  transform: scale(1.2);
+}
+
+/* Hide navigation arrows */
+.banner-swiper .swiper-button-next,
+.banner-swiper .swiper-button-prev {
+  display: none !important;
+}
+
+/* Regular Swiper pagination styles for other components */
+.swiper-pagination-bullet {
+  background: rgba(255, 255, 255, 0.5);
+  opacity: 1;
+  cursor: pointer;
+  pointer-events: auto;
+}
+
+.swiper-pagination-bullet-active {
+  background: var(--maroon);
+}
+
+/* Ensure all swiper pagination containers are clickable */
+.swiper-pagination {
+  pointer-events: auto !important;
+  z-index: 10 !important;
+}
+
+/* Kegiatan Swiper Styles */
+.kegiatan-swiper {
+  padding-bottom: 50px !important;
+  padding-top: 12px !important;
+  background: transparent !important;
+}
+
+.kegiatan-swiper .swiper-wrapper {
+  background: transparent !important;
+  pointer-events: auto !important;
+}
+
+.kegiatan-swiper .swiper-slide {
+  height: auto !important;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  background: transparent !important;
+}
+
+.kegiatan-swiper .swiper-pagination {
+  bottom: 0 !important;
+  position: relative !important;
+  margin-top: 30px;
+  z-index: 10 !important;
+  pointer-events: auto !important;
+}
+
+.kegiatan-bullet {
+  background: rgba(128, 0, 0, 0.3) !important;
+  opacity: 1 !important;
+  width: 10px !important;
+  height: 10px !important;
+  margin: 0 4px !important;
+  transition: all 0.3s ease !important;
+  cursor: pointer !important;
+  pointer-events: auto !important;
+}
+
+.kegiatan-bullet-active {
+  background: var(--maroon) !important;
+  transform: scale(1.3) !important;
+}
+
+/* Line clamp utilities */
+.line-clamp-1 {
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.line-clamp-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Struktur Swiper Styles */
+.struktur-swiper {
+  padding-bottom: 50px !important;
+  padding-top: 12px !important;
+  background: transparent !important;
+}
+
+.struktur-swiper .swiper-wrapper {
+  background: transparent !important;
+  pointer-events: auto !important;
+}
+
+.struktur-swiper .swiper-slide {
+  height: auto !important;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  background: transparent !important;
+}
+
+.struktur-swiper .swiper-pagination {
+  bottom: 0 !important;
+  position: relative !important;
+  margin-top: 30px;
+  z-index: 10 !important;
+  pointer-events: auto !important;
+}
+
+.struktur-bullet {
+  background: rgba(128, 0, 0, 0.3) !important;
+  opacity: 1 !important;
+  width: 10px !important;
+  height: 10px !important;
+  margin: 0 4px !important;
+  transition: all 0.3s ease !important;
+  cursor: pointer !important;
+  pointer-events: auto !important;
+}
+
+.struktur-bullet-active {
+  background: var(--maroon) !important;
+  transform: scale(1.3) !important;
+}
+
+/* Portrait photo aspect ratio utility */
+.aspect-3-4 {
+  aspect-ratio: 3/4;
+}
+
+/* Homepage Background - Simple */
+.homepage-background {
+  background-color: #f9fafb;
+}
+
+/* Pembina Swiper Pagination */
+.pembina-bullet {
+  width: 12px !important;
+  height: 12px !important;
+  background: #d1d5db !important;
+  opacity: 1 !important;
+  margin: 0 6px !important;
+  border-radius: 50% !important;
+  transition: all 0.3s ease !important;
+}
+
+.pembina-bullet-active {
+  background: #991b1b !important;
+  transform: scale(1.2) !important;
+}
+
+/* Photo Gallery Swiper Styles */
+.main-photo-swiper {
+  height: 500px;
+}
+
+.main-photo-swiper .swiper-button-next,
+.main-photo-swiper .swiper-button-prev {
+  color: white;
+  background: rgba(0, 0, 0, 0.5);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  margin-top: -22px;
+}
+
+.main-photo-swiper .swiper-button-next:after,
+.main-photo-swiper .swiper-button-prev:after {
+  font-size: 18px;
+}
+
+.main-photo-swiper .swiper-pagination {
+  bottom: 20px;
+}
+
+.main-photo-swiper .swiper-pagination-bullet {
+  background: rgba(255, 255, 255, 0.7);
+  opacity: 1;
+  width: 10px;
+  height: 10px;
+}
+
+.main-photo-swiper .swiper-pagination-bullet-active {
+  background: white;
+  transform: scale(1.2);
+}
+
+.thumb-swiper {
+  height: 80px;
+  margin-top: 16px;
+}
+
+.thumb-swiper .swiper-slide {
+  opacity: 0.6;
+  cursor: pointer;
+  transition: opacity 0.3s;
+}
+
+.thumb-swiper .swiper-slide-thumb-active {
+  opacity: 1;
+}
+
+@media (max-width: 768px) {
+  .main-photo-swiper {
+    height: 300px;
+  }
+
+  .thumb-swiper {
+    height: 60px;
+  }
+}

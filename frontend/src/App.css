@@ -1,0 +1,70 @@
+.App {
+  text-align: center;
+}
+
+/* Swiper custom styles */
+.swiper {
+  width: 100%;
+  height: 100%;
+}
+
+.swiper-slide {
+  text-align: center;
+  font-size: 18px;
+  background: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.swiper-slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Custom button styles */
+.btn-maroon {
+  @apply bg-gradient-to-r from-maroon-700 to-maroon-800 hover:from-maroon-800 hover:to-maroon-700 text-white font-bold py-3 px-6 rounded-lg transition-all duration-300 shadow-maroon-sm hover:shadow-maroon-md;
+}
+
+.btn-outline-maroon {
+  @apply border-2 border-maroon-700 text-maroon-700 hover:bg-gradient-to-r hover:from-maroon-700 hover:to-maroon-800 hover:text-white font-bold py-3 px-6 rounded-lg transition-all duration-300;
+}
+
+/* Card styles */
+.card {
+  @apply bg-white rounded-lg shadow-md overflow-hidden;
+}
+
+.card-hover {
+  @apply hover:shadow-lg transition-shadow duration-200;
+}
+
+/* Modal styles */
+.modal-overlay {
+  @apply fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50;
+}
+
+.modal-content {
+  @apply bg-white rounded-lg p-6 max-w-md w-full mx-4;
+}
+
+/* Table styles */
+.table-striped tbody tr:nth-child(odd) {
+  @apply bg-gray-50;
+}
+
+/* Toast notification styles */
+.toast {
+  @apply fixed top-4 right-4 p-4 rounded-lg shadow-lg z-50;
+}
+
+.toast-success {
+  @apply bg-green-500 text-white;
+}
+
+.toast-error {
+  @apply bg-red-500 text-white;
+}
