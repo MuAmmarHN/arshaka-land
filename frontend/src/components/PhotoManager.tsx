@@ -6,7 +6,7 @@ import {
   ArrowDownIcon,
   CloudArrowUpIcon,
 } from '@heroicons/react/24/outline';
-import { uploadAPI, kegiatanPhotosAPI, resolveImageUrl } from '../services/api';
+import { uploadAPI, kegiatanPhotosAPI } from '../services/api';
 import { useToast } from './Toast';
 import OptimizedImage from './OptimizedImage';
 

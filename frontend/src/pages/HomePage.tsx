@@ -42,13 +42,17 @@ const HomePage: React.FC = () => {
 
       setLoading(false);
     } catch (error) {
-      console.error('Error fetching data:', error);
-      // Set empty arrays as fallback
+      console.error('Error fetching homepage data:', error);
+      // Set empty arrays as fallback to prevent crashes
       setBanners([]);
       setKegiatan([]);
       setStruktur([]);
+      setPembina([]);
       setQrCodes([]);
       setLoading(false);
+
+      // Optional: Show user-friendly error message
+      // You can add a toast notification here if needed
     }
   };
 
@@ -68,7 +72,7 @@ const HomePage: React.FC = () => {
           <div className="text-center">
             <div className="mx-auto h-32 w-32 mb-4 flex items-center justify-center">
               <img
-                src="/assets/AB.PNG"
+                src="/assets/AB.png"
                 alt="Arshaka Bimantara Logo"
                 className="h-32 w-32 object-contain"
                 onError={(e) => {
@@ -480,8 +484,9 @@ const HomePage: React.FC = () => {
                 pagination={{
                   clickable: true,
                   bulletClass: 'swiper-pagination-bullet struktur-bullet',
-                  bulletActiveClass: 'swiper-pagination-bullet-active struktur-bullet-active',
-                  dynamicBullets: false,
+                  bulletActiveClass: 'struktur-bullet-active',
+                  dynamicBullets: true,
+                  dynamicMainBullets: 3,
                   renderBullet: function (_index: number, className: string) {
                     return '<span class="' + className + '"></span>';
                   },
@@ -580,7 +585,7 @@ const HomePage: React.FC = () => {
             <div className="lg:col-span-1">
               <div className="flex items-center mb-6">
                 <img
-                  src="/assets/AB.PNG"
+                  src="/assets/AB.png"
                   alt="Arshaka Bimantara Logo"
                   className="h-10 w-10 mr-3"
                   onError={(e) => {

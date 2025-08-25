@@ -34,6 +34,7 @@ const OptimizedImage: React.FC<OptimizedImageProps> = ({
   }, [onLoad]);
 
   const handleError = useCallback(() => {
+    console.warn('Image failed to load:', currentSrc);
     if (currentSrc !== fallbackSrc) {
       setCurrentSrc(fallbackSrc);
       setImageError(true);

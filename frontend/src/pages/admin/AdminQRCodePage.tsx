@@ -20,6 +20,7 @@ const AdminQRCodePage: React.FC = () => {
 
   useEffect(() => {
     fetchQRCodes();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const fetchQRCodes = async () => {

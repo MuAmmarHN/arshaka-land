@@ -26,6 +26,7 @@ const AdminBannerPage: React.FC = () => {
 
   useEffect(() => {
     fetchBanners();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const fetchBanners = useCallback(async () => {

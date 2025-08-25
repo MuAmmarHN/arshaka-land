@@ -30,6 +30,7 @@ const AdminKegiatanPage: React.FC = () => {
 
   useEffect(() => {
     fetchKegiatan();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const fetchKegiatan = useCallback(async (showLoading = true) => {

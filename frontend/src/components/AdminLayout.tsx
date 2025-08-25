@@ -61,7 +61,7 @@ const AdminLayout: React.FC<AdminLayoutProps> = ({ children }) => {
         <div className="flex items-center justify-between p-6 border-b border-maroon-800/30">
           <div className="flex items-center space-x-3">
             <img
-              src="/assets/AB.PNG"
+              src="/assets/AB.png"
               alt="AB Logo"
               className="h-10 w-10 object-contain drop-shadow-lg"
               onError={(e) => {

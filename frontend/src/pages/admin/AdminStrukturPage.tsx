@@ -33,23 +33,18 @@ const AdminStrukturPage: React.FC = () => {
   useEffect(() => {
     fetchStruktur();
     fetchPembina();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  // Debug log untuk melihat data struktur
-  useEffect(() => {
-    console.log('AdminStrukturPage struktur data:', struktur);
-    if (struktur.length > 0) {
-      console.log('First struktur item NRA:', struktur[0].nra);
-    }
-  }, [struktur]);
+
 
   const fetchStruktur = async () => {
     try {
       const data = await strukturAPI.getAll();
-      console.log('fetchStruktur received data:', data); // Debug log
+
       setStruktur(data);
     } catch (err) {
-      console.error('fetchStruktur error:', err); // Debug log
+      console.error('fetchStruktur error:', err);
       error('Failed to fetch struktur');
     } finally {
       setLoading(false);
@@ -147,13 +142,11 @@ const AdminStrukturPage: React.FC = () => {
     }
 
     try {
-      console.log('handleSubmit formData:', formData); // Debug log
       if (editingStruktur) {
-        console.log('Updating struktur ID:', editingStruktur.id); // Debug log
         await strukturAPI.update(editingStruktur.id, formData);
         success('Struktur updated successfully');
       } else {
-        console.log('Creating new struktur'); // Debug log
+
         await strukturAPI.create(formData);
         success('Struktur created successfully');
       }
