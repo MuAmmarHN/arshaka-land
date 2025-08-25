@@ -153,12 +153,12 @@ const HomePage: React.FC = () => {
               </p>
             </div>
             <div>
-              <div className="w-full h-64 bg-gradient-to-br from-maroon-100 to-maroon-200 rounded-lg shadow-md flex items-center justify-center">
-                <div className="text-center">
-                  <div className="text-4xl mb-2">📚</div>
-                  <div className="text-maroon-800 font-semibold">Sejarah</div>
-                  <div className="text-maroon-600 text-sm">Arshaka Bimantara</div>
-                </div>
+              <div className="w-full h-64 rounded-lg shadow-md overflow-hidden">
+                <img
+                  src="/assets/sejarah.jpeg"
+                  alt="Sejarah Arshaka Bimantara"
+                  className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                />
               </div>
             </div>
           </div>
