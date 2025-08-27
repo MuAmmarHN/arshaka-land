@@ -2,11 +2,13 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination, Autoplay } from 'swiper/modules';
+import type { Swiper as SwiperType } from 'swiper';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import { bannerAPI, kegiatanAPI, strukturAPI, pembinaAPI, qrcodeAPI, Banner, Kegiatan, Struktur, Pembina, QRCode } from '../services/api';
 import OptimizedImage from '../components/OptimizedImage';
+import CustomSwiperPagination from '../components/CustomSwiperPagination';
 
 const HomePage: React.FC = () => {
   const [banners, setBanners] = useState<Banner[]>([]);
@@ -15,6 +17,27 @@ const HomePage: React.FC = () => {
   const [pembina, setPembina] = useState<Pembina[]>([]);
   const [qrCodes, setQrCodes] = useState<QRCode[]>([]);
   const [loading, setLoading] = useState(true);
+
+  // Swiper states for struktur section
+  const [strukturSwiper, setStrukturSwiper] = useState<SwiperType | null>(null);
+  const [strukturActiveIndex, setStrukturActiveIndex] = useState(0);
+
+  // Swiper states for kegiatan section
+  const [kegiatanSwiper, setKegiatanSwiper] = useState<SwiperType | null>(null);
+  const [kegiatanActiveIndex, setKegiatanActiveIndex] = useState(0);
+
+  // Handler functions for custom pagination
+  const handleStrukturSlideChange = (index: number) => {
+    if (strukturSwiper) {
+      strukturSwiper.slideToLoop ? strukturSwiper.slideToLoop(index) : strukturSwiper.slideTo(index);
+    }
+  };
+
+  const handleKegiatanSlideChange = (index: number) => {
+    if (kegiatanSwiper) {
+      kegiatanSwiper.slideToLoop ? kegiatanSwiper.slideToLoop(index) : kegiatanSwiper.slideTo(index);
+    }
+  };
 
   useEffect(() => {
     fetchData();
@@ -186,18 +209,20 @@ const HomePage: React.FC = () => {
             </p>
           </div>
 
-          <div className="grid lg:grid-cols-2 gap-8 lg:gap-12">
+          <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-stretch">
             {/* Visi Card */}
-            <div className="group relative">
+            <div className="group relative h-full">
               <div className="absolute inset-0 bg-gray-400 rounded-2xl blur-xl opacity-10 group-hover:opacity-20 transition-all duration-500"></div>
-              <div className="relative bg-white/90 backdrop-blur-sm rounded-2xl p-8 lg:p-10 border border-gray-200 shadow-xl hover:shadow-2xl transition-all duration-500 group-hover:-translate-y-2">
-                <div className="text-center">
-                  <h3 className="text-3xl font-bold bg-gradient-to-r from-maroon-700 to-maroon-800 bg-clip-text text-transparent mb-8">
+              <div className="relative bg-white/90 backdrop-blur-sm rounded-2xl p-8 lg:p-10 border border-gray-200 shadow-xl hover:shadow-2xl transition-all duration-500 group-hover:-translate-y-2 h-full flex flex-col">
+                <div className="text-center mb-8">
+                  <h3 className="text-3xl font-bold bg-gradient-to-r from-maroon-700 to-maroon-800 bg-clip-text text-transparent">
                     Visi
                   </h3>
-                  <div className="relative">
+                </div>
+                <div className="flex-1 flex items-center">
+                  <div className="relative w-full">
                     <div className="absolute inset-0 bg-gradient-to-r from-maroon-50 to-transparent rounded-lg opacity-50"></div>
-                    <p className="relative text-gray-700 text-lg leading-relaxed font-medium">
+                    <p className="relative text-gray-700 text-lg leading-relaxed font-medium text-justify">
                       ARSHAKA BIMANTARA sebagai organisasi kepecintaalaman akan senantiasa menggalang persatuan dan kerja sama antar sesama kelompok pecinta alam dalam mengembangkan kegiatan kepecintaalaman untuk menunjang pembangunan nasional sesuai dengan asas dan kode etik kepecintaalaman dan menjadikan mahasiswa Pecintaalam yang sadar akan kepedulian lingkungan hidup serta menjadikan mahasiswa yang dapat berkomunikasi dan berkontribusi di masyarakat.
                     </p>
                   </div>
@@ -206,16 +231,16 @@ const HomePage: React.FC = () => {
             </div>
 
             {/* Misi Card */}
-            <div className="group relative">
+            <div className="group relative h-full">
               <div className="absolute inset-0 bg-gray-400 rounded-2xl blur-xl opacity-10 group-hover:opacity-20 transition-all duration-500"></div>
-              <div className="relative bg-white/90 backdrop-blur-sm rounded-2xl p-8 lg:p-10 border border-gray-200 shadow-xl hover:shadow-2xl transition-all duration-500 group-hover:-translate-y-2">
+              <div className="relative bg-white/90 backdrop-blur-sm rounded-2xl p-8 lg:p-10 border border-gray-200 shadow-xl hover:shadow-2xl transition-all duration-500 group-hover:-translate-y-2 h-full flex flex-col">
                 <div className="text-center mb-8">
                   <h3 className="text-3xl font-bold bg-gradient-to-r from-maroon-700 to-maroon-800 bg-clip-text text-transparent">
                     Misi
                   </h3>
                 </div>
 
-                <div className="space-y-4">
+                <div className="flex-1 space-y-4">
                   {[
                     "Mempererat tali persaudaraan antar sesama anggota maupun sesama kelompok pecintaalam.",
                     "Menjalin hubungan kerjasama yang dinamis dan tidak mengikat serta koordinasi diantara pecinta alam.",
@@ -223,12 +248,12 @@ const HomePage: React.FC = () => {
                     "Membangun hubungan baik dengan pihak eksternal atau masyarakat."
                   ].map((misi, index) => (
                     <div key={index} className="flex items-start group/item">
-                      <div className="relative mr-4 mt-1">
+                      <div className="relative mr-4 mt-1 flex-shrink-0">
                         <div className="w-8 h-8 bg-gradient-to-br from-maroon-600 to-maroon-700 rounded-full flex items-center justify-center shadow-lg group-hover/item:scale-110 transition-transform duration-300">
                           <span className="text-white font-bold text-sm">{index + 1}</span>
                         </div>
                       </div>
-                      <p className="text-gray-700 font-medium leading-relaxed group-hover/item:text-gray-900 transition-colors duration-300">
+                      <p className="text-gray-700 font-medium leading-relaxed group-hover/item:text-gray-900 transition-colors duration-300 text-left">
                         {misi}
                       </p>
                     </div>
@@ -247,7 +272,7 @@ const HomePage: React.FC = () => {
             <h2 className="text-3xl font-bold bg-gradient-to-r from-maroon-700 to-maroon-800 bg-clip-text text-transparent text-center mb-12">Kegiatan Terbaru</h2>
             <div className="relative" style={{ paddingTop: '12px', paddingBottom: '12px' }}>
               <Swiper
-                modules={[Pagination, Autoplay]}
+                modules={[Autoplay]}
                 spaceBetween={24}
                 slidesPerView={1}
                 breakpoints={{
@@ -260,21 +285,14 @@ const HomePage: React.FC = () => {
                     spaceBetween: 24,
                   },
                 }}
-                pagination={{
-                  clickable: true,
-                  bulletClass: 'swiper-pagination-bullet kegiatan-bullet',
-                  bulletActiveClass: 'swiper-pagination-bullet-active kegiatan-bullet-active',
-                  dynamicBullets: false,
-                  renderBullet: function (_index: number, className: string) {
-                    return '<span class="' + className + '"></span>';
-                  },
-                }}
+                onSwiper={setKegiatanSwiper}
+                onSlideChange={(swiper: SwiperType) => setKegiatanActiveIndex(swiper.realIndex)}
                 autoplay={{
                   delay: 4000,
                   disableOnInteraction: false,
                 }}
                 loop={kegiatan.length > 3}
-                className="kegiatan-swiper pb-12"
+                className="kegiatan-swiper"
               >
                 {kegiatan.map((item) => (
                   <SwiperSlide key={item.id}>
@@ -322,6 +340,14 @@ const HomePage: React.FC = () => {
                   </SwiperSlide>
                 ))}
               </Swiper>
+
+              {/* Custom Pagination */}
+              <CustomSwiperPagination
+                totalSlides={kegiatan.length}
+                activeIndex={kegiatanActiveIndex}
+                onSlideChange={handleKegiatanSlideChange}
+                isLoop={kegiatan.length > 3}
+              />
             </div>
           </div>
         </section>
@@ -464,7 +490,7 @@ const HomePage: React.FC = () => {
             </div>
             <div className="relative" style={{ paddingTop: '12px', paddingBottom: '12px' }}>
               <Swiper
-                modules={[Pagination, Autoplay]}
+                modules={[Autoplay]}
                 spaceBetween={24}
                 slidesPerView={1}
                 breakpoints={{
@@ -481,21 +507,14 @@ const HomePage: React.FC = () => {
                     spaceBetween: 24,
                   },
                 }}
-                pagination={{
-                  clickable: true,
-                  bulletClass: 'swiper-pagination-bullet struktur-bullet',
-                  bulletActiveClass: 'struktur-bullet-active',
-                  dynamicBullets: false,
-                  renderBullet: function (_index: number, className: string) {
-                    return '<span class="' + className + '"></span>';
-                  },
-                }}
+                onSwiper={setStrukturSwiper}
+                onSlideChange={(swiper: SwiperType) => setStrukturActiveIndex(swiper.realIndex)}
                 autoplay={{
                   delay: 3500,
                   disableOnInteraction: false,
                 }}
                 loop={struktur.length > 4}
-                className="struktur-swiper pb-12"
+                className="struktur-swiper"
               >
                 {struktur.map((person) => (
                   <SwiperSlide key={person.id}>
@@ -534,6 +553,14 @@ const HomePage: React.FC = () => {
                   </SwiperSlide>
                 ))}
               </Swiper>
+
+              {/* Custom Pagination */}
+              <CustomSwiperPagination
+                totalSlides={struktur.length}
+                activeIndex={strukturActiveIndex}
+                onSlideChange={handleStrukturSlideChange}
+                isLoop={struktur.length > 4}
+              />
             </div>
           </div>
         </section>
