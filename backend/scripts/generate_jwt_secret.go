@@ -1,3 +1,6 @@
+//go:build ignore
+// +build ignore
+
 package main
 
 import (
@@ -17,7 +20,7 @@ func main() {
 
 	// Encode to base64 for use as JWT secret
 	secret := base64.URLEncoding.EncodeToString(bytes)
-	
+
 	fmt.Println("=== GENERATED JWT SECRET ===")
 	fmt.Println("Copy this secret to your .env file:")
 	fmt.Println()

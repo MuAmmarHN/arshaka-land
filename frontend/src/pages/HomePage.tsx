@@ -485,8 +485,7 @@ const HomePage: React.FC = () => {
                   clickable: true,
                   bulletClass: 'swiper-pagination-bullet struktur-bullet',
                   bulletActiveClass: 'struktur-bullet-active',
-                  dynamicBullets: true,
-                  dynamicMainBullets: 3,
+                  dynamicBullets: false,
                   renderBullet: function (_index: number, className: string) {
                     return '<span class="' + className + '"></span>';
                   },

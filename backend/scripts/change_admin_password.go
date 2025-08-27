@@ -1,9 +1,11 @@
+//go:build ignore
+// +build ignore
+
 package main
 
 import (
 	"arshaka-backend/pkg/database"
 	"bufio"
-	"database/sql"
 	"fmt"
 	"log"
 	"os"
